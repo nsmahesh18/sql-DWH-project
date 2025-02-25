@@ -1,10 +1,10 @@
-📊 SQL Data Warehouse Project
+# 📊 SQL Data Warehouse Project
 Building a modern data warehouse with SQL Server, covering ETL processes, data modeling, and analytics.
 
 🏗️ Data Architecture (Medallion Model)
-- Bronze: Raw data ingestion (CSV → SQL Server)
-- Silver: Data cleaning, standardization, and transformation
-- Gold: Business-ready data modeled in a star schema for analytics
+- Bronze Layer: Raw data ingestion (CSV → SQL Server)
+- Silver Layer: Data cleaning, standardization, and transformation
+- Gold Layer: Business-ready data modeled in a star schema for analytics
 
 🔑 Key Components
 - ETL Pipelines: Extract, transform, and load data into a structured warehouse
