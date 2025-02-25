@@ -32,4 +32,4 @@ Building a modern data warehouse with SQL Server, covering ETL processes, data m
 - Notion (Project management)
 
 🛡️ License
-Licensed under MIT – free to use, modify, and share.
+- Licensed under MIT – free to use, modify, and share.
