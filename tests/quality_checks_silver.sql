@@ -2,9 +2,9 @@
 ===============================================================================
 Quality Checks
 ===============================================================================
-Script Purpose:
-    This script performs various quality checks for data consistency, accuracy, 
-    and standardization across the 'silver' layer. It includes checks for:
+Script Purpose: This script performs various quality checks for data consistency, 
+accuracy and standardization across the 'silver' layer. 
+It includes checks for:
     - Null or duplicate primary keys.
     - Unwanted spaces in string fields.
     - Data standardization and consistency.
@@ -12,7 +12,7 @@ Script Purpose:
     - Data consistency between related fields.
 
 Usage Notes:
-    - Run these checks after data loading Silver Layer.
+    - Run these checks after loading Silver Layer.
     - Investigate and resolve any discrepancies found during the checks.
 ===============================================================================
 */
@@ -20,6 +20,7 @@ Usage Notes:
 -- ====================================================================
 -- Checking 'silver.crm_cust_info'
 -- ====================================================================
+
 -- Check for NULLs or Duplicates in Primary Key
 -- Expectation: No Results
 SELECT 
@@ -44,6 +45,7 @@ FROM silver.crm_cust_info;
 -- ====================================================================
 -- Checking 'silver.crm_prd_info'
 -- ====================================================================
+
 -- Check for NULLs or Duplicates in Primary Key
 -- Expectation: No Results
 SELECT 
@@ -60,7 +62,7 @@ SELECT
 FROM silver.crm_prd_info
 WHERE prd_nm != TRIM(prd_nm);
 
--- Check for NULLs or Negative Values in Cost
+-- Check for NULLs or Negative Values in prd_cost
 -- Expectation: No Results
 SELECT 
     prd_cost 
@@ -74,14 +76,14 @@ FROM silver.crm_prd_info;
 
 -- Check for Invalid Date Orders (Start Date > End Date)
 -- Expectation: No Results
-SELECT 
-    * 
+SELECT * 
 FROM silver.crm_prd_info
 WHERE prd_end_dt < prd_start_dt;
 
 -- ====================================================================
 -- Checking 'silver.crm_sales_details'
 -- ====================================================================
+
 -- Check for Invalid Dates
 -- Expectation: No Invalid Dates
 SELECT 
@@ -94,16 +96,15 @@ WHERE sls_due_dt <= 0
 
 -- Check for Invalid Date Orders (Order Date > Shipping/Due Dates)
 -- Expectation: No Results
-SELECT 
-    * 
+SELECT * 
 FROM silver.crm_sales_details
 WHERE sls_order_dt > sls_ship_dt 
    OR sls_order_dt > sls_due_dt;
 
 -- Check Data Consistency: Sales = Quantity * Price
 -- Expectation: No Results
-SELECT DISTINCT 
-    sls_sales,
+SELECT 
+    DISTINCT sls_sales,
     sls_quantity,
     sls_price 
 FROM silver.crm_sales_details
@@ -119,8 +120,10 @@ ORDER BY sls_sales, sls_quantity, sls_price;
 -- ====================================================================
 -- Checking 'silver.erp_cust_az12'
 -- ====================================================================
+
 -- Identify Out-of-Range Dates
--- Expectation: Birthdates between 1924-01-01 and Today
+-- Expectation: Birthdates between 1924-01-01 and Today 
+--              (Assumed Business rule for the project)
 SELECT DISTINCT 
     bdate 
 FROM silver.erp_cust_az12
@@ -135,6 +138,7 @@ FROM silver.erp_cust_az12;
 -- ====================================================================
 -- Checking 'silver.erp_loc_a101'
 -- ====================================================================
+
 -- Data Standardization & Consistency
 SELECT DISTINCT 
     cntry 
@@ -144,6 +148,7 @@ ORDER BY cntry;
 -- ====================================================================
 -- Checking 'silver.erp_px_cat_g1v2'
 -- ====================================================================
+
 -- Check for Unwanted Spaces
 -- Expectation: No Results
 SELECT 
