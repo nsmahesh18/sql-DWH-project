@@ -80,7 +80,7 @@ BEGIN
 	SELECT
 		prd_id,
 		REPLACE(SUBSTRING(prd_key,1,5),'-','_') cat_id,		--Obtaining cat_id from prd_key to join this table to the silver.erp_px_cat_g1v2
-		REPLACE(SUBSTRING(prd_key,7,len(prd_key)),'-','_') prd_key,	--using remaining prd_key to join this table to the silver.crm_sales_details
+		SUBSTRING(prd_key,7,len(prd_key)) prd_key,	--using remaining prd_key to join this table to the silver.crm_sales_details
 		prd_nm,
 		ISNULL (prd_cost,0) AS prd_cost,		-- replacing nulls with 0 in the prd_cost column
 		CASE UPPER(TRIM(prd_line)) 
