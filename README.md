@@ -2,6 +2,8 @@
 Building a modern data warehouse with SQL Server, covering ETL processes, data modeling, and analytics.
 
 ## 🏗️ Data Architecture (Medallion Model)
+![DWH Project Architecture](https://github.com/user-attachments/assets/d6e87023-80f0-4311-b21d-839752d9cdc7)
+
 - Bronze Layer: Raw data ingestion (CSV → SQL Server)
 - Silver Layer: Data cleaning, standardization, and transformation
 - Gold Layer: Business-ready data modeled in a star schema for analytics
