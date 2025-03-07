@@ -39,4 +39,4 @@ Building a modern data warehouse with SQL Server, covering ETL processes, data m
 ## 👤 About Me  
 Hi! I’m **Mahesh**, an IT professional exploring the **data industry** with a passion for **data engineering, analytics, and SQL**.  
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?logo=linkedin)](https://www.linkedin.com/in/nsmahesh/)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/nsmahesh/)
